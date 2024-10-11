@@ -50,6 +50,7 @@ on knowledge to colleagues.
 ## Good to have links
 
 - https://docs.joinmastodon.org/client/intro/
+- https://docs.joinmastodon.org/methods/streaming/
 
 ## Decisions
 
@@ -61,6 +62,12 @@ Work with GitHub Project, https://github.com/users/kronis/projects/1
 
 Working directly in main branch, since I am the only one working here.
 
-### Versions
+### Testing Framework
 
-- Node 22.9.0
+Chossing Mocha this time over Jest. Normally I use Jest since it has some coverage and export features, but for this case it is not required.
+
+### Development Versions
+
+| App  | Version |
+| ---- | ------- |
+| Node | 22.9.0  |
