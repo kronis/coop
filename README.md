@@ -36,3 +36,18 @@ assumptions. It is up to you how much time you spend on the assignment and how c
 your solution is, but you should deliver something that is appropriate to be used as a basis for technical
 assessment for the job role level you are applying for. The cases should be presented in a manner fit for passing
 on knowledge to colleagues. 
+
+# Solution
+## Good to have links
+* https://docs.joinmastodon.org/client/intro/
+
+## Decisions 
+### Backlog
+Work with GitHub Project, https://github.com/users/kronis/projects/1 
+
+### Work trunk based development or with PRs
+Working directly in main branch, since I am the only one working here.
+
+### Versions 
+* Node 22.9.0
+
