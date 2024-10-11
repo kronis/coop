@@ -3,9 +3,11 @@
   "extends": "@tsconfig/node22/tsconfig.json",
   "compilerOptions": {
     /* Modules */
-    "rootDir": "./src" /* Specify the root folder within your source files. */,
+    "rootDir": "src" /* Specify the root folder within your source files. */,
 
     /* Emit */
-    "outDir": "./build" /* Specify an output folder for all emitted files. */
-  }
+    "outDir": "build" /* Specify an output folder for all emitted files. */
+  },
+  // "include": ["src/**/*.ts"],
+  "exclude": ["build/**/*", "node_modules/**/*"]
 }
