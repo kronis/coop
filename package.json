@@ -4,7 +4,7 @@
   "description": "Interview case for FTE role.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "clear": "rm -rf dist node_modules package-lock.json build",
     "refresh": "npm run clear && npm install && npm run build",
     "dev": "nodemon src/index.ts",
@@ -30,10 +30,12 @@
   "devDependencies": {
     "@eslint/js": "^9.12.0",
     "@tsconfig/node22": "^22.0.0",
+    "@types/mocha": "^10.0.9",
     "eslint": "^9.12.0",
     "globals": "^15.11.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
+    "mocha": "^10.7.3",
     "nodemon": "^3.1.7",
     "prettier": "3.3.3",
     "ts-node": "^10.9.2",

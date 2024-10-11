@@ -1,6 +1,7 @@
 import globals from 'globals';
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
+import { rules } from '@eslint/js/src/configs/eslint-all';
 
 export default [
   {
@@ -16,6 +17,12 @@ export default [
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
+    },
+  },
+  {
+    files: ['src/**/*.spec.{js,mjs,cjs,ts}'],
+    rules: {
+      '@typescript-eslint/no-unsafecall': 'off',
     },
   },
 ];
