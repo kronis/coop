@@ -49,8 +49,15 @@ on knowledge to colleagues.
 
 ## Good to have links
 
+### Documentation
+
 - https://docs.joinmastodon.org/client/intro/
 - https://docs.joinmastodon.org/methods/streaming/
+
+### API Urls
+
+- https://mastodon.social/api/v1/streaming/health
+- https://mastodon.social/api/v2/instance
 
 ## Decisions
 
@@ -71,3 +78,18 @@ Chossing Mocha this time over Jest. Normally I use Jest since it has some covera
 | App  | Version |
 | ---- | ------- |
 | Node | 22.9.0  |
+
+# Getting Started
+
+## How to develop
+
+```bash
+export MASTODON_ACCESS_TOKEN=<access_token>
+npm run dev
+```
+
+## How to test
+
+```bash
+npm run test
+```

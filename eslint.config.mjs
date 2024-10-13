@@ -1,11 +1,10 @@
 import globals from 'globals';
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import { rules } from '@eslint/js/src/configs/eslint-all';
 
 export default [
   {
-    ignores: ['.prettierrc.js', 'build/**/*', 'eslint.config.mjs'],
+    ignores: ['.prettierrc.cjs', 'build/**/*', 'eslint.config.mjs', '.mocharc.cjs'],
   },
   { files: ['src/**/*.{js,mjs,cjs,ts}'] },
   { languageOptions: { globals: globals.node } },

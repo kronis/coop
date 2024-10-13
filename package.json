@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Interview case for FTE role.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "mocha",
     "clear": "rm -rf dist node_modules package-lock.json build",
     "refresh": "npm run clear && npm install && npm run build",
-    "dev": "nodemon src/index.ts",
+    "dev": "tsx watch src/index.ts",
     "start": "node build/index.js",
     "build": "tsc",
     "lint": "eslint .",
@@ -30,15 +31,19 @@
   "devDependencies": {
     "@eslint/js": "^9.12.0",
     "@tsconfig/node22": "^22.0.0",
+    "@types/chai": "^5.0.0",
     "@types/mocha": "^10.0.9",
+    "chai": "^5.1.1",
     "eslint": "^9.12.0",
     "globals": "^15.11.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "mocha": "^10.7.3",
+    "nock": "^14.0.0-beta.15",
     "nodemon": "^3.1.7",
     "prettier": "3.3.3",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.1",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.8.1"
   }

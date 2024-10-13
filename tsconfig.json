@@ -4,9 +4,15 @@
   "compilerOptions": {
     /* Modules */
     // "rootDir": "./src" /* Specify the root folder within your source files. */,
-
     /* Emit */
-    "outDir": "build" /* Specify an output folder for all emitted files. */
+    "outDir": "build" /* Specify an output folder for all emitted files. */,
+    // "moduleResolution": "Bundler" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "esModuleInterop": true
+    // "module": "nodenext",
+    // "moduleResolution": "nodenext",
+    // "target": "esnext",
   },
   // "include": ["src/**/*.ts"],
   "exclude": ["build/**/*", "node_modules/**/*"]
