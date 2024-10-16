@@ -78,6 +78,8 @@ Chossing Mocha this time over Jest. Normally I use Jest since it has some covera
 | App  | Version |
 | ---- | ------- |
 | Node | 22.9.0  |
+| Docker | 27.2.0 |
+| Docker Compose | 2.29.2 |
 
 # Getting Started
 
@@ -93,3 +95,30 @@ npm run dev
 ```bash
 npm run test
 ```
+
+## How to run it all 
+```bash
+docker compose up
+```
+
+# Architechture
+## Docker Compose Service Connections
+
+| Service   | Connects To            | Protocol | Port  | Purpose                          |
+|-----------|------------------------|----------|-------|----------------------------------|
+| fetcher   | rabbit-mq              | AMQP     | 5672  | Sending messages to RabbitMQ     |
+| consumer  | rabbit-mq              | AMQP     | 5672  | Receiving messages from RabbitMQ |
+| frontend  | consumer               | WS       | 3000  | Accessing the backend API        |
+| fetcher   | Mastodon API           | WSS      | 443   | Fetching Mastodon data           |
+| frontend  | user browser           | HTTP     | 8080  | Exposing frontend web interface  |
+| rabbit-mq | Admin (Management UI)  | HTTP     | 8081  | RabbitMQ Management interface    |
+
+```mermaid
+graph TD;
+    A[User Browser] -->|HTTP:8080| B[Frontend];
+    B -->|WS:3000|    C[Consumer];
+    B -->|AMQP:5672|  D[RabbitMQ];
+    C -->|AMQP:5672|  D[RabbitMQ];
+    D -->|AMQP:5672|  E[Fetcher];
+    E -->|WSS:443|    F[Mastodon API];
+    D -->|HTTP:15672| G[RabbitMQ Admin UI];
