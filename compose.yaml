@@ -1,0 +1,16 @@
+services:
+  fetcher:
+    build: fetcher
+    ports:
+      - "8000:5000"
+    environment:
+      MASTODON_ACCESS_TOKEN: "mYJPfwCGQUnXOpNTiqbmBk0P6wRpU1MOE_F_7SollDI"
+    secrets:
+       - mastodon_access_token 
+  
+  # redis:
+    # image: "redis:alpine"
+
+secrets:
+  mastodon_access_token:
+    environment: MASTODON_ACCESS_TOKEN

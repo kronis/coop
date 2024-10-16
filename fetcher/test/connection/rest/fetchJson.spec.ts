@@ -1,6 +1,6 @@
 import nock from 'nock';
-import { fetchJson } from '../../../src/index.ts';
 import { expect } from 'chai';
+import { fetchJson } from '../../../src/connection/index.js';
 
 describe('fetchJson', () => {
   const mockUrl = 'http://example.com/data.json';

@@ -7,11 +7,13 @@
     /* Emit */
     "outDir": "build" /* Specify an output folder for all emitted files. */,
     // "moduleResolution": "Bundler" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
-    "esModuleInterop": true
+    // "allowImportingTsExtensions": true,
+    // "noEmit": true,
+    // "esModuleInterop": true,
     // "module": "nodenext",
-    // "moduleResolution": "nodenext",
+    // "module": "CommonJS",
+    // "target": "ES2023",
+    // "moduleResolution": "Bundler",
     // "target": "esnext",
   },
   // "include": ["src/**/*.ts"],

@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function fetchText(url: string): Promise<any> {
   try {
     const response = await fetch(url);
