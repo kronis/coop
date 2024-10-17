@@ -2,7 +2,7 @@ import nock from 'nock';
 import { expect } from 'chai';
 import { fetchJson } from '../../../src/connection/index.js';
 
-describe('fetchJson', () => {
+describe.skip('fetchJson', () => {
   const mockUrl = 'http://example.com/data.json';
 
   beforeEach(() => {

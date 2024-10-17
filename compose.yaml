@@ -1,16 +1,52 @@
 services:
+
   fetcher:
+    depends_on:
+      rabbit-mq:
+        condition: service_healthy
     build: fetcher
-    ports:
-      - "8000:5000"
     environment:
-      MASTODON_ACCESS_TOKEN: "mYJPfwCGQUnXOpNTiqbmBk0P6wRpU1MOE_F_7SollDI"
+      MASTODON_ACCESS_TOKEN: "${MASTODON_ACCESS_TOKEN}"
     secrets:
        - mastodon_access_token 
+    networks:
+      - app-network
+
+  frontend:
+    depends_on:
+      - consumer
+    build: frontend
+    ports:
+      - "8080:80"
+    networks:
+      - app-network
   
-  # redis:
-    # image: "redis:alpine"
+  consumer:
+    depends_on:
+      rabbit-mq:
+        condition: service_healthy
+    build: consumer
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+  
+  rabbit-mq:
+    image: rabbitmq:4-management
+    ports:
+      - "8081:15672"
+    networks:
+      - app-network
+    healthcheck:
+      test: rabbitmq-diagnostics check_port_connectivity
+      interval: 5s
+      timeout: 10s
+      retries: 5
 
 secrets:
   mastodon_access_token:
     environment: MASTODON_ACCESS_TOKEN
+  
+networks:
+  app-network:
+    driver: bridge

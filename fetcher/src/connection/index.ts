@@ -1,2 +1,2 @@
-export * from './rest/fetchJson.js';
-export * from './rest/fetchText.js';
+export * from './rest/index.js';
+export * from './websocket/index.js';

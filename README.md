@@ -82,22 +82,47 @@ Chossing Mocha this time over Jest. Normally I use Jest since it has some covera
 | Docker Compose | 2.29.2 |
 
 # Getting Started
+There there three applications at the moment. 
 
-## How to develop
+## Fetcher
+Fetching data from mastodon.social via WebSocket, and putting all data in RabbitMQ. 
 
-```bash
-export MASTODON_ACCESS_TOKEN=<access_token>
+### Development in Fetcher
+```bash 
+cd fetcher
+npm run refresh
 npm run dev
 ```
 
-## How to test
-
+### How to test
 ```bash
 npm run test
 ```
 
+## Consumer
+Small API using express api, fetching data from RabbitMQ and deliver it to frontend via WebSocket.
+
+### Development in Consumer
+```bash 
+cd consumer
+npm run refresh
+npm run dev
+```
+
+## Frontend
+Just a ViteJS app that connects to the Consumer WS and prints out all posts in real time. (Just the ID at the moment)
+
+### Development in Frontend
+```bash 
+cd frontend
+npm run refresh
+npm run dev
+```
+
+
 ## How to run it all 
 ```bash
+export MASTODON_ACCESS_TOKEN=<access_token>
 docker compose up
 ```
 
@@ -116,9 +141,9 @@ docker compose up
 ```mermaid
 graph TD;
     A[User Browser] -->|HTTP:8080| B[Frontend];
-    B -->|WS:3000|    C[Consumer];
-    B -->|AMQP:5672|  D[RabbitMQ];
-    C -->|AMQP:5672|  D[RabbitMQ];
-    D -->|AMQP:5672|  E[Fetcher];
-    E -->|WSS:443|    F[Mastodon API];
-    D -->|HTTP:15672| G[RabbitMQ Admin UI];
+    B -->|WS:3000| C[Consumer];
+    C -->|AMQP:5672| D[RabbitMQ];
+    E -->|WSS:443| F[Mastodon API];
+    G[RabbitMQ Admin UI] --> |HTTP:15672| D;
+    E[Fetcher] --> |AMQP:5672| D;
+
