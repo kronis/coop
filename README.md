@@ -84,6 +84,12 @@ Chossing Mocha this time over Jest. Normally I use Jest since it has some covera
 # Getting Started
 There there three applications at the moment. 
 
+## Pre requirements 
+You need an access token for https://mastodon.social, so log in to your account, go to https://mastodon.social/settings/applications press "New application", give it a name, and the only Scope it needs access to is _read:statuses_. Now go to your new application and save your access token:
+```bash
+export MASTODON_ACCESS_TOKEN=<access token>
+```
+
 ## Fetcher
 Fetching data from mastodon.social via WebSocket, and putting all data in RabbitMQ. 
 

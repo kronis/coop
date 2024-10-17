@@ -11,7 +11,7 @@ async function fetchWithRetry(url: string, tries = 3, responseType: 'text' | 'js
     return responseType === 'json' ? await response.json() : await response.text();
   } catch (error) {
     if (tries > 1) {
-      const delay = Math.floor(Math.random() * 1000); // Add some jitter to the delay
+      const delay = Math.floor(Math.random() * 3000); // Add some jitter to the delay
 
       console.log(`Will retry in ${delay}`);
       await wait(delay);

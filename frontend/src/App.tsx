@@ -1,13 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import './App.css';
-
-interface WebSocketData {
-  id: string;
-  timestamp: string;
-}
+import { MastodonStatus } from './MastodonStatus';
 
 function App() {
-  const [messages, setMessages] = useState<WebSocketData[]>([]);
+  const [messages, setMessages] = useState<MastodonStatus[]>([]);
   const [isConnected, setIsConnected] = useState(false);
   const socketRef = useRef<WebSocket | null>(null);
 
@@ -21,7 +17,7 @@ function App() {
       };
 
       socket.onmessage = (event) => {
-        const data = JSON.parse(event.data) as WebSocketData;
+        const data = JSON.parse(event.data) as MastodonStatus;
         setMessages((prevMessages) => {
           const updatedMessages = [...prevMessages, data];
           // Ensure only the last 3 messages are kept
@@ -73,7 +69,8 @@ function App() {
           <ul>
             {messages.map((message, index) => (
               <li key={index}>
-                <p>{message.id}</p>
+                <p><a href={message.uri}>{message.account.username}</a></p>
+                <div className="content" dangerouslySetInnerHTML={{__html: message.content}}></div>
                 {/* <p>{new Date(message.timestamp).toLocaleString()}</p> */}
               </li>
             ))}
