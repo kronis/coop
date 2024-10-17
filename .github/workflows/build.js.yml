@@ -13,7 +13,7 @@ env:
   HUSKY: 0
 
 jobs:
-  build:
+  consumer:
     runs-on: ubuntu-latest
 
     strategy:
@@ -39,3 +39,30 @@ jobs:
       - name: Test
         run: npm test
         working-directory: consumer
+
+  fetcher:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: fetcher/package-lock.json
+      - name: Clean install
+        run: npm ci
+        working-directory: fetcher
+      - name: Build
+        run: npm run build --if-present
+        working-directory: fetcher
+      - name: Test
+        run: npm test
+        working-directory: fetcher
