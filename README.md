@@ -110,7 +110,8 @@ npm run dev
 ```
 
 ## Frontend
-Just a ViteJS app that connects to the Consumer WS and prints out all posts in real time. (Just the ID at the moment)
+Just a ViteJS app that connects to the Consumer WS and prints out all posts in real time. (Just the ID at the moment).
+http://localhost:8080/
 
 ### Development in Frontend
 ```bash 
@@ -118,6 +119,9 @@ cd frontend
 npm run refresh
 npm run dev
 ```
+
+## RabbitMQ 
+http://localhost:8081
 
 
 ## How to run it all 

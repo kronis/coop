@@ -2,7 +2,7 @@ import nock from 'nock';
 import { expect } from 'chai';
 import { fetchJson } from '../../../src/connection/index.js';
 
-describe.skip('fetchJson', () => {
+describe('fetchJson', () => {
   const mockUrl = 'http://example.com/data.json';
 
   beforeEach(() => {
@@ -29,7 +29,7 @@ describe.skip('fetchJson', () => {
       throw new Error('Test failed: Expected error was not thrown');
     } catch (error) {
       if (error instanceof Error) {
-        expect(error.message).to.include('Failed to fetch from');
+        expect(error.message).to.include('Failed to fetch after');
       } else {
         throw new Error('Test failed: Unexpected error type');
       }
@@ -45,7 +45,7 @@ describe.skip('fetchJson', () => {
       throw new Error('Test failed: Expected error was not thrown');
     } catch (error) {
       if (error instanceof Error) {
-        expect(error.message).to.include('Error fetching JSON');
+        expect(error.message).to.include('Failed to fetch after');
       } else {
         throw new Error('Test failed: Unexpected error type');
       }
