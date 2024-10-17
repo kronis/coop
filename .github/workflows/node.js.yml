@@ -28,6 +28,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+          cache-dependency-path: fetcher/package-lock.json
       - name: Clean install
         run: npm ci
         working-directory: fetcher
